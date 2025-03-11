@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>IEEE CIS ISIMA SBC</title>
-    <meta name="title" content="IEEE CIS ISIMA SBC">
+    <title>IEEE CIS ISIMA SBC | Computational Intelligence Society Tunisia</title>
+    <meta name="title" content="IEEE CIS ISIMA SBC | Computational Intelligence Society Tunisia">
     <meta name="description" content="The IEEE CIS ISI Mahdia Chapter promotes computational intelligence technologies through events, workshops, and projects for students and professionals.">
     <meta name="keywords" content="IEEE, CIS, Computational Intelligence, ISI Mahdia, AI, Machine Learning, Neural Networks, Fuzzy Systems, Evolutionary Computation">
     <meta name="author" content="IEEE CIS ISI Mahdia Chapter">
@@ -20,11 +20,21 @@
     <meta property="og:description" content="Join us to explore computational intelligence technologies through workshops, projects, and networking opportunities.">
     <meta property="og:image" content="/src/assets/CISNBG.png">
     
-  
+    <!-- Twitter / X Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ieee-cis-isima.org/">
+    <meta property="twitter:title" content="IEEE Computational Intelligence Society - ISI Mahdia Chapter">
+    <meta property="twitter:description" content="Join us to explore computational intelligence technologies through workshops, projects, and networking opportunities.">
+    <meta property="twitter:image" content="/src/assets/CISNBG.png">
+    
+    <!-- Image optimization hints -->
+    <link rel="preload" as="image" href="/src/assets/CISNBG.png">
+    
     <!-- Preconnect to important third-party domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://ieee-cis-isima.org/">
@@ -32,6 +42,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
     
     <!-- Structured Data for Organization -->
     <script type="application/ld+json">
@@ -57,7 +76,35 @@
           "@type": "PostalAddress",
           "addressLocality": "Mahdia",
           "addressRegion": "Mahdia",
+          "postalCode": "5100",
+          "streetAddress": "Route de Rejiche Km 4",
           "addressCountry": "Tunisia"
+        },
+        "description": "The IEEE CIS ISI Mahdia Chapter promotes computational intelligence technologies through events, workshops, and projects for students and professionals in Tunisia."
+      }
+    </script>
+
+    <!-- Structured Data for Event (if you host events) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "EventSeries",
+        "name": "IEEE CIS Workshops & Seminars",
+        "description": "Regular workshops and seminars on computational intelligence topics",
+        "organizer": {
+          "@type": "Organization",
+          "name": "IEEE Computational Intelligence Society - ISI Mahdia Chapter",
+          "url": "https://ieee-cis-isima.org"
+        },
+        "location": {
+          "@type": "Place",
+          "name": "ISI Mahdia",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mahdia",
+            "addressRegion": "Mahdia",
+            "addressCountry": "Tunisia"
+          }
         }
       }
     </script>

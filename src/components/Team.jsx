@@ -1,5 +1,11 @@
 import React from 'react'
-import profile from '../assets/images/profile avatar.jpg'
+import profile1 from '../assets/images/rayen.JPG'
+import profile2 from '../assets/images/maryem.JPG'
+import profile3 from '../assets/images/amir.JPG'
+import profile4 from '../assets/images/yessin.JPG'
+import profile5 from '../assets/images/dali.JPG'
+import profile6 from '../assets/images/aya.JPG'
+import profile7 from '../assets/images/sabra.jpeg'
 
 function Team() {
   return (
@@ -8,7 +14,7 @@ function Team() {
         <h2 className="committee"><span>Meet the Executive Committee</span></h2>            
         <div className="team">
           <div className="img1">
-            <img src={profile} alt="Mohamed Rayen Ourabi" />
+            <img src={profile1} alt="Mohamed Rayen Ourabi" />
             <div className="contact-overlay">
               
               <a className="contact-item" href="mailto:rayen@ieee.org">
@@ -37,7 +43,7 @@ function Team() {
           </div>
           
           <div className="img1">
-            <img src={profile} alt="Maryem Mbarek" />
+            <img src={profile2} alt="Maryem Mbarek" />
             <div className="contact-overlay">
               
               <a className="contact-item" href="mailto:maryem@ieee.org">
@@ -68,7 +74,7 @@ function Team() {
           </div>
           
           <div className="img1">
-            <img src={profile} alt="Amir Toumi" />
+            <img src={profile3} alt="Amir Toumi" />
             <div className="contact-overlay">
               
               <a className="contact-item" href="mailto:amir@ieee.org">
@@ -97,7 +103,7 @@ function Team() {
           </div>
           
           <div className="img1">
-            <img src={profile} alt="Ahmed Yassine Romdhan" />
+            <img src={profile4} alt="Ahmed Yassine Romdhan" />
             <div className="contact-overlay">
               
               <a className="contact-item" href="mailto:ahmedyassine@ieee.org">
@@ -128,7 +134,7 @@ function Team() {
         
         <div className="team">
           <div className="img1">
-            <img src={profile} alt="Dali Kamessi" />
+            <img src={profile5} alt="Dali Kamessi" />
             <div className="contact-overlay">
               
               <a className="contact-item" href="mailto:dali@ieee.org">
@@ -159,7 +165,7 @@ function Team() {
           </div>
           
           <div className="img1">
-            <img src={profile} alt="Aya Chokri" />
+            <img src={profile6} alt="Aya Chokri" />
             <div className="contact-overlay">
               
               <a className="contact-item" href="mailto:aya@ieee.org">
@@ -188,7 +194,7 @@ function Team() {
           </div>
           
           <div className="img1">
-            <img src={profile} alt="Sabra Ben Fadhel" />
+            <img src={profile7} alt="Sabra Ben Fadhel" />
             <div className="contact-overlay">
               
               <a className="contact-item" href="mailto:sabra@ieee.org">
