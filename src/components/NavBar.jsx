@@ -4,7 +4,7 @@ import { FaSun } from "react-icons/fa";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import logoLight from "../assets/CISNBG.png";
 import logoDark from "../assets/CISNBG (1).png";
-import ParticlesComponent from "../components/Particles"; // Change to absolute path
+import ParticlesComponent from "./ParticlesComponent"; // Change to absolute path
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
