@@ -27,6 +27,7 @@ function Home() {
         Your browser does not support the video tag.
       </video>
       </div>
+      <Team></Team>
 
       <About></About>
       <div className="statics_container">
@@ -100,7 +101,6 @@ function Home() {
           </div>
         </div>
       </div>
-      <Team></Team>
       
       
       <FindUs />

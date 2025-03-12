@@ -328,6 +328,31 @@
   .committee::after {
     height: 3px;
   }
+
+  .contact-overlay {
+    padding: 0.8rem;
+    gap: 0.5rem;
+  }
+  
+  .contact-item {
+    padding: 0.4rem;
+    margin-bottom: 0.4rem;
+    gap: 0.3rem;
+  }
+  
+  .contact-item .icon-container {
+    padding: 0.4rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  
+  .contact-item:hover .icon-container {
+    transform: rotate(180deg);
+  }
+  
+  .contact-item .contact-text {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -374,6 +399,32 @@
   .committee {
     margin-bottom: 30px;
   }
+
+  .contact-overlay {
+    padding: 0.6rem;
+    gap: 0.4rem;
+  }
+  
+  .contact-item {
+    padding: 0.3rem;
+    margin-bottom: 0.3rem;
+    border-radius: 1.5rem;
+  }
+  
+  .contact-item .icon-container {
+    padding: 0.3rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .contact-item:hover .icon-container {
+    transform: rotate(90deg);
+  }
+  
+  .contact-item .contact-text {
+    font-size: 0.75rem;
+    max-width: calc(100% - 2.5rem);
+  }
 }
 
 @media (max-width: 360px) {
@@ -399,5 +450,35 @@
   
   .team_container .img1 h1 {
     font-size: 13px;
+  }
+
+  .contact-overlay {
+    padding: 0.5rem;
+    gap: 0.3rem;
+  }
+  
+  .contact-item {
+    padding: 0.25rem;
+    margin-bottom: 0.25rem;
+    border-radius: 1.2rem;
+  }
+  
+  .contact-item .icon-container {
+    padding: 0.25rem;
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+  
+  .contact-item:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  .contact-item:hover .icon-container {
+    transform: rotate(45deg);
+  }
+  
+  .contact-item .contact-text {
+    font-size: 0.7rem;
+    max-width: calc(100% - 2rem);
   }
 }
