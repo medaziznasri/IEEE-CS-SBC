@@ -5,6 +5,7 @@ import EventsPage from './components/EventsPage';
 import ContactUs from './components/ContactUs';
 import Navbar from './components/NavBar';
 import Footer from './components/Footer';
+import EventDetails from './components/EventDetails';
 import { useState, useEffect } from "react";
 
 
@@ -39,6 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:eventId" element={<EventDetails />} />
         <Route path="/contact" element={<ContactUs />} /> 
       </Routes>
       <Footer />

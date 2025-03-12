@@ -10,7 +10,6 @@ const MemberOfMonth = ({ member }) => {
   // If no member is passed, use this default member data
   const defaultMember = {
     name: "Med Aziz Nasri",
-    role: "Machine Learning Researcher",
     imageUrl: image
   };
 
