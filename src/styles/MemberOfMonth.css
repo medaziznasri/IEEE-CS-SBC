@@ -1,0 +1,555 @@
+/* Base container styling */
+.motm-container {
+  margin: 5rem auto;
+  max-width: 450px;
+  padding: 0 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.motm-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title styling with artistic elements */
+.motm-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.motm-title-container {
+  position: relative;
+  padding-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.motm-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #3a7bd5, #00d2ff, #3a7bd5);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite;
+  text-shadow: 0 0 5px rgba(58, 123, 213, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.motm-title-decoration {
+  width: 180px;
+  height: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.motm-line {
+  stroke: url(#title-gradient);
+  stroke-width: 1;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw 3s forwards;
+}
+
+.motm-circle {
+  fill: #00d2ff;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards 1.5s;
+  filter: drop-shadow(0 0 5px rgba(0, 210, 255, 0.8));
+}
+
+.motm-circle.small {
+  animation-delay: 1.8s;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Main frame container with 3D effect */
+.motm-frame-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+/* Background effects */
+.motm-background-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.motm-bg-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(58, 123, 213, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(20px);
+  animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+}
+
+.motm-bg-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(58, 123, 213, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 123, 213, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: center bottom;
+  opacity: 0.3;
+}
+
+.motm-bg-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(0, 210, 255, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.2;
+}
+
+.motm-scan-effect {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom,
+    rgba(0, 210, 255, 0) 0%,
+    rgba(0, 210, 255, 0.1) 50%,
+    rgba(0, 210, 255, 0) 100%);
+  animation: scan 4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes scan {
+  0% { top: -50%; }
+  100% { top: 100%; }
+}
+
+/* Artistic frame styling */
+.motm-artistic-frame {
+  position: relative;
+  width: 320px;
+  height: 420px; /* Increased height to optimize image display */
+  background: rgba(24, 34, 51, 0.75);
+  border-radius: 15px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(58, 123, 213, 0.2);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 80px rgba(58, 123, 213, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  z-index: 2;
+}
+
+/* Circuit patterns */
+.motm-circuit-pattern {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.motm-circuit-pattern.top-left {
+  top: 0;
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%233a7bd5' stroke-width='1' d='M0,50 L20,50 L20,20 L80,20 M50,0 L50,20'/%3E%3Ccircle cx='50' cy='20' r='3' fill='%2300d2ff'/%3E%3C/svg%3E");
+  transform-origin: top left;
+  animation: circuitFlash 8s infinite;
+}
+
+.motm-circuit-pattern.top-right {
+  top: 0;
+  right: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%233a7bd5' stroke-width='1' d='M100,50 L80,50 L80,20 L40,20 M70,0 L70,30'/%3E%3Ccircle cx='70' cy='30' r='3' fill='%2300d2ff'/%3E%3C/svg%3E");
+  transform: scaleX(-1);
+  animation: circuitFlash 8s infinite 2s;
+}
+
+.motm-circuit-pattern.bottom-left {
+  bottom: 0;
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%233a7bd5' stroke-width='1' d='M0,50 L20,50 L20,70 L60,70 M30,100 L30,70'/%3E%3Ccircle cx='30' cy='70' r='3' fill='%2300d2ff'/%3E%3C/svg%3E");
+  transform: scaleY(-1);
+  animation: circuitFlash 8s infinite 4s;
+}
+
+.motm-circuit-pattern.bottom-right {
+  bottom: 0;
+  right: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%233a7bd5' stroke-width='1' d='M100,50 L80,50 L80,70 L30,70 M50,100 L50,70'/%3E%3Ccircle cx='50' cy='70' r='3' fill='%2300d2ff'/%3E%3C/svg%3E");
+  transform: scale(-1);
+  animation: circuitFlash 8s infinite 6s;
+}
+
+@keyframes circuitFlash {
+  0%, 90%, 100% { opacity: 0.2; }
+  95% { opacity: 0.8; }
+}
+
+/* Image container styling */
+.motm-image-container {
+  width: 100%;
+  height: 320px; /* Increased height for better image proportion */
+  position: relative;
+  overflow: hidden;
+}
+
+.motm-image-wrapper {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.motm-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) saturate(1.2);
+  transition: transform 0.5s ease;
+}
+
+.motm-artistic-frame:hover .motm-image {
+  transform: scale(1.05);
+}
+
+.motm-image-glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 210, 255, 0.1);
+  mix-blend-mode: hue;
+  opacity: 0;
+  animation: glitch 8s linear infinite;
+}
+
+@keyframes glitch {
+  0%, 100% { opacity: 0; transform: translate(0); }
+  33% { opacity: 0; }
+  34% { opacity: 0.3; transform: translate(10px, -5px); }
+  35% { opacity: 0; }
+  89% { opacity: 0; }
+  90% { opacity: 0.3; transform: translate(-10px, 5px); }
+  91% { opacity: 0; }
+}
+
+.motm-image-tech-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.motm-tech-border {
+  width: 100%;
+  height: 100%;
+}
+
+.motm-corner {
+  fill: none;
+  stroke: #00d2ff;
+  stroke-width: 2;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: drawCorner 2s forwards;
+  filter: drop-shadow(0 0 2px rgba(0, 210, 255, 0.8));
+}
+
+@keyframes drawCorner {
+  to { stroke-dashoffset: 0; }
+}
+
+.motm-image-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.motm-scanline {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 210, 255, 0) 0%,
+    rgba(0, 210, 255, 0.2) 50%,
+    rgba(0, 210, 255, 0) 100%
+  );
+  animation: scanline 3s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanline {
+  0% { top: -10px; }
+  100% { top: 320px; }
+}
+
+.motm-glow-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 210, 255, 0.1) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  mix-blend-mode: screen;
+  animation: glow 6s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.6; }
+}
+
+/* Member info styling */
+.motm-member-info {
+  padding: 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(24, 34, 51, 0.9),
+    rgba(24, 34, 51, 0.8)
+  );
+}
+
+.motm-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  text-shadow: 0 0 5px rgba(0, 210, 255, 0.5);
+}
+
+.motm-name-highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, transparent, #00d2ff, transparent);
+  transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.motm-artistic-frame:hover .motm-name-highlight {
+  width: 100%;
+  animation: highlightPulse 2s infinite;
+}
+
+@keyframes highlightPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.motm-member-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.8rem 0;
+}
+
+.motm-member-line {
+  width: 15px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00d2ff, transparent);
+}
+
+.motm-member-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00d2ff;
+  margin: 0 5px;
+  box-shadow: 0 0 5px rgba(0, 210, 255, 0.8);
+}
+
+.motm-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 4;
+}
+
+.motm-badge-shine {
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 10px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: skewX(-20deg);
+  animation: badgeShine 3s ease-in-out infinite;
+}
+
+@keyframes badgeShine {
+  0% { left: -20px; }
+  30% { left: 120%; }
+  100% { left: 120%; }
+}
+
+/* Data particles */
+.motm-data-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.motm-data-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #00d2ff;
+  opacity: 0;
+  box-shadow: 0 0 4px #00d2ff;
+  animation: particle 4s ease-in-out infinite;
+}
+
+@keyframes particle {
+  0% { opacity: 0; transform: scale(1); }
+  50% { opacity: 1; }
+  100% { 
+    opacity: 0; 
+    transform: scale(0);
+  }
+}
+
+.motm-data-particle.p1 { top: 20%; left: 10%; animation-delay: 0s; }
+.motm-data-particle.p2 { top: 70%; left: 15%; animation-delay: 0.5s; }
+.motm-data-particle.p3 { top: 40%; left: 5%; animation-delay: 1s; }
+.motm-data-particle.p4 { top: 60%; left: 90%; animation-delay: 1.5s; }
+.motm-data-particle.p5 { top: 30%; left: 85%; animation-delay: 2s; }
+.motm-data-particle.p6 { top: 80%; left: 75%; animation-delay: 2.5s; }
+.motm-data-particle.p7 { top: 10%; left: 50%; animation-delay: 3s; }
+.motm-data-particle.p8 { top: 85%; left: 50%; animation-delay: 3.5s; }
+.motm-data-particle.p9 { top: 45%; left: 20%; animation-delay: 1.2s; }
+.motm-data-particle.p10 { top: 50%; left: 80%; animation-delay: 2.2s; }
+.motm-data-particle.p11 { top: 15%; left: 70%; animation-delay: 0.7s; }
+.motm-data-particle.p12 { top: 75%; left: 30%; animation-delay: 2.7s; }
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .motm-container {
+    margin: 3rem auto;
+  }
+  
+  .motm-title {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+  
+  .motm-title-decoration {
+    width: 140px;
+  }
+  
+  .motm-artistic-frame {
+    width: 280px;
+    height: 380px;
+  }
+  
+  .motm-image-container {
+    height: 280px;
+  }
+  
+  .motm-scanline {
+    animation: scanline-mobile 3s linear infinite;
+  }
+  
+  @keyframes scanline-mobile {
+    0% { top: -10px; }
+    100% { top: 280px; }
+  }
+  
+  .motm-name {
+    font-size: 1.5rem;
+  }
+  
+  .motm-circuit-pattern {
+    width: 80px;
+    height: 80px;
+  }
+}

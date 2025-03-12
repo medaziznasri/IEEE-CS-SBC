@@ -15,6 +15,7 @@ import About from './About'
 import Team from './Team'
 import Counter from './Counter'
 import FindUs from './FindUs'
+import MemberOfMonth from './MemberOfMonth'
 
 function Home() {
   return (
@@ -101,9 +102,8 @@ function Home() {
           </div>
         </div>
       </div>
-      
-      
-      <FindUs />
+      <MemberOfMonth />   
+        <FindUs />
     
     </div>
   )
