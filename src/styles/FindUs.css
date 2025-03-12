@@ -1,0 +1,237 @@
+/* Find Us Section */
+.find-us-container {
+  margin: var(--section-spacing-lg) auto var(--section-spacing-md);
+  padding: 0 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Enhanced location title with glowing effect */
+.location-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
+  position: relative;
+  text-align: center;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: inline-block;
+  width: 100%;
+  color: var(--skills-box);
+  overflow: hidden;
+  text-shadow: 0 0 10px var(--skills-box),
+               0 0 20px var(--skills-box),
+               0 0 40px rgba(0, 155, 255, 0.2);
+  animation: title-glow 3s ease-in-out infinite alternate;
+}
+
+/* Add animation for the glowing effect */
+@keyframes title-glow {
+  0% {
+    text-shadow: 0 0 2px var(--skills-box),
+                 0 0 4px var(--skills-box),
+                 0 0 6px rgba(0, 155, 255, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 2px var(--skills-box),
+                 0 0 4px var(--skills-box),
+                 0 0 6px var(--skills-box),
+                 0 0 8px rgba(0, 155, 255, 0.3);
+  }
+}
+
+.location-title::before {
+  content: "LOCATION";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8rem;
+  opacity: 0.1;
+  white-space: nowrap;
+  letter-spacing: 12px;
+  width: 100%;
+  z-index: -1;
+  color: var(--text-color);
+  animation: watermark-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes watermark-pulse {
+  0% { opacity: 0.08; }
+  100% { opacity: 0.12; }
+}
+
+/* Add an underline glowing effect */
+.location-title::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--skills-box), transparent);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: pulse-width 3s infinite;
+}
+
+@keyframes pulse-width {
+  0%, 100% { 
+    width: 150px; 
+    opacity: 0.7;
+    box-shadow: 0 0 5px var(--skills-box),
+                0 0 10px var(--skills-box);
+  }
+  50% { 
+    width: 250px; 
+    opacity: 1;
+    box-shadow: 0 0 15px var(--skills-box),
+                0 0 30px var(--skills-box);
+  }
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.map-container iframe {
+  width: 100% !important; /* Ensure iframe takes full width */
+  border-radius: 12px;
+  min-height: 500px;
+  box-shadow: 0 4px 15px var(--skills-box);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 992px) {
+  .location-title {
+    margin-bottom: 40px;
+  }
+  
+  .location-title::before {
+    font-size: 6rem;
+  }
+  
+  .map-container {
+    padding: 8px;
+    transform: perspective(1000px) rotateX(1deg);
+  }
+  
+  .map-container iframe {
+    min-height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .find-us-container {
+    margin: var(--section-spacing-md) auto;
+    padding: 0 15px;
+  }
+  
+  .location-title {
+    margin-bottom: 30px;
+  }
+  
+  .location-title::before {
+    font-size: 4rem;
+    opacity: 0.03;
+  }
+  
+  .location-title:after {
+    height: 4px;
+    bottom: -10px;
+  }
+  
+  @keyframes pulse-width {
+    0%, 100% { width: 120px; opacity: 0.7; }
+    50% { width: 180px; opacity: 1; }
+  }
+  
+  .map-container {
+    padding: 6px;
+    border-radius: 16px;
+    transform: none;
+  }
+  
+  .map-container iframe {
+    min-height: 400px;
+    border-radius: 10px;
+  }
+  
+  /* Reduce animation intensity on mobile for better performance */
+  @keyframes title-glow {
+    0% {
+      text-shadow: 0 0 2px var(--skills-box),
+                   0 0 3px var(--skills-box);
+    }
+    100% {
+      text-shadow: 0 0 2px var(--skills-box),
+                   0 0 4px var(--skills-box),
+                   0 0 5px rgba(0, 155, 255, 0.3);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .find-us-container {
+    margin: var(--section-spacing-sm) auto;
+  }
+  
+  .location-title {
+    font-size: clamp(2rem, 5vw, 3rem); /* Smaller title on very small screens */
+  }
+  
+  .location-title::before {
+    font-size: 3rem; /* Smaller watermark */
+    opacity: 0.05;
+  }
+  
+  .location-title:after {
+    height: 3px;
+    bottom: -8px;
+  }
+  
+  @keyframes pulse-width {
+    0%, 100% { width: 80px; opacity: 0.7; }
+    50% { width: 140px; opacity: 1; }
+  }
+  
+  .map-container {
+    padding: 5px;
+    border-radius: 12px;
+  }
+  
+  .map-container iframe {
+    min-height: 350px;
+    border-radius: 8px;
+  }
+  
+  /* Further reduce animation complexity for performance */
+  .location-title {
+    animation: title-glow 4s ease-in-out infinite alternate; /* Slower animation */
+  }
+}
+
+/* Very small screen fixes */
+@media (max-width: 480px) {
+  .map-container iframe {
+    min-height: 300px;
+  }
+  
+  /* Optimize performance by reducing complex animations */
+  @keyframes pulse-width {
+    0%, 100% { 
+      width: 80px; 
+      opacity: 0.7;
+      box-shadow: 0 0 5px var(--skills-box);
+    }
+    50% { 
+      width: 120px; 
+      opacity: 1;
+      box-shadow: 0 0 10px var(--skills-box);
+    }
+  }
+}

@@ -17,12 +17,14 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.3.0",
     "react-simple-typewriter": "^5.0.1",
     "react-tsparticles": "^2.12.2",
     "tsparticles": "^3.8.1",
-    "typewriter-effect": "^2.21.0"
+    "typewriter-effect": "^2.21.0",
+    "vite-ssg": "^25.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

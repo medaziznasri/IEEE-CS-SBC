@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@800&display=swap');
+
+/* Base spacing and rhythm variables */
+:root {
+  --section-spacing-lg: 100px;  
+  --section-spacing-md: 70px;
+  --section-spacing-sm: 50px;
+  --section-spacing-xs: 30px;
+  
+  /* Add standardized breakpoints */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+}
+
+/* Global smooth scrolling - add at the top of the file, after imports */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
+}
+
+body.light-mode {
+  --bg-color: #ffffff;
+  --bg-color-app: #f2ececd6;
+  --text-color: #000000;
+  --navbar-bg: #ffffff;
+  --icon-color: #000000;
+  --resume-color: #ffffff;
+  --skills-bg: #0f6da7b8;
+  --skills-box: #009bff;
+  --tech-bg: #e22c4146;
+  --bg-color-menu:#ffffff;
+}
+
+body.dark-mode {
+  --bg-color: linear-gradient(90deg,rgb(10, 44, 62) 5%, rgb(0, 0, 0) 90%);
+  --bg-color-app: #121212ed;
+  --text-color: #ffffff;
+  --navbar-bg: #090e12;
+  --icon-color: #ffffff;
+  --resume-color: #000000;
+  --skills-bg: #7d7d7d1a;
+  --skills-box: #00f3ff;
+  --tech-bg: #1dd3be42;
+  --bg-color-menu: rgb(2, 8, 11);
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  /* Add better scrolling feel with improved momentum-based scrolling for touch devices */
+  -webkit-overflow-scrolling: touch;
+  /* Ensure we take the full viewport height properly */
+  min-height: 100%;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Make sure we have RGB variables for gradient effects */
+:root {
+  --skills-box-rgb: 0, 155, 255;
+}
+
+body.dark-mode {
+  --skills-box-rgb: 0, 243, 255;
+}
+
+/* Scroll margin for anchor targets to account for fixed header */
+:target {
+  scroll-margin-top: 100px;
+}
+
+/* Add this section for scroll-based reveal animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add scroll-specific optimizations for mobile devices */
+@media (max-width: 768px) {
+  html {
+    /* Use a slightly faster scroll on mobile for better UX */
+    scroll-behavior: smooth;
+  }
+  
+  :target {
+    /* Adjust scroll margin for smaller header on mobile */
+    scroll-margin-top: 80px;
+  }
+  
+  /* Optimize animations for better performance on mobile */
+  .scroll-reveal {
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  }
+}
+
+/* Control scroll behavior for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .scroll-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

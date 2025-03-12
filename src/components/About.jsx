@@ -1,4 +1,7 @@
+import React from 'react';
+import '../styles/About.css';
 import image from "../assets/images/d.png";
+
 function About() {
  
   return (

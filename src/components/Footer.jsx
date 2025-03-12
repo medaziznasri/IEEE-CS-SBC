@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import "../styles/Footer.css";
 
 function Footer() {
   const navigate = useNavigate();
@@ -109,6 +110,7 @@ function Footer() {
       // Clean up any remaining stars
       stars.forEach(star => {
         if (footerRef.current && footerRef.current.contains(star)) {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           footerRef.current.removeChild(star);
         }
       });

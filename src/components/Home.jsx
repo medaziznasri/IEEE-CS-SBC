@@ -1,4 +1,4 @@
-import React from 'react'
+import '../styles/Home.css';
 import img1 from '../assets/images/3.png'
 import img2 from '../assets/images/480680851_576742675326860_8616305235929434779_n.jpg'
 import img3 from '../assets/images/480819626_576742601993534_8874484697937364079_n.jpg'
@@ -15,7 +15,6 @@ import About from './About'
 import Team from './Team'
 import Counter from './Counter'
 import FindUs from './FindUs'
-// Removed EventsPage import
 
 function Home() {
   return (
@@ -103,7 +102,6 @@ function Home() {
       </div>
       <Team></Team>
       
-      {/* EventsPage removed from here */}
       
       <FindUs />
     

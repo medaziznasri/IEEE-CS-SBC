@@ -1,29 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import logo from '../assets/images/gods 4.0.png';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import logo1 from '../assets/images/ieee ramadhanieet.jpg';
+import '../styles/EventsPage.css';
+
 function EventsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [animatedEvents, setAnimatedEvents] = useState([]);
   
-  const events = [
+  const events = useMemo(() => [
     {
       id: 1,
       title: 'RamadhanIEEET v 4.0',
       date: '16-03-2025',
       category: 'upcoming',
       image: logo1,
-      description: 'A special evening where we come together to break our fast , enjoy delicious food and create unforgettable memories.'
+      description: 'A special evening where we come together to break our fast, enjoy delicious food and create unforgettable memories.'
     },
-
-    {
-      id: 2,
-      title: 'GOD 4.0',
-      date: '13-02-2025',
-      category: 'all',
-      image: logo, 
-      description: '24-hour hackathon with amazing prizes.'
-    },
-  ];
+    // Add more events for better demonstration
+   
+  ], []);
 
   const categories = [
     { id: 'all', label: 'All Events' },
@@ -36,7 +31,7 @@ function EventsPage() {
       setAnimatedEvents(events.map(event => event.id));
     }, 100);
     return () => clearTimeout(timer);
-  }, []);
+  }, [events]);
 
   const filteredEvents = activeCategory === 'all' 
     ? events 
@@ -80,7 +75,7 @@ function EventsPage() {
                 <h3 className="event-title">{event.title}</h3>
                 <p className="event-description">{event.description}</p>
                 <div className="event-buttons">
-                  <a href="#" className="view-more-link">View More</a>
+                  <Link to={`/events/${event.id}`} className="view-more-link">View More</Link>
                 </div>
               </div>
             </div>

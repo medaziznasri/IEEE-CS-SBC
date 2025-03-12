@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef } from "react";
-import { BsMoonStarsFill, BsList, BsX } from "react-icons/bs";
-import { FaSun } from "react-icons/fa";
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import logoLight from "../assets/CISNBG.png";
-import logoDark from "../assets/CISNBG (1).png";
-import ParticlesComponent from "./ParticlesComponent"; // Change to absolute path
+import React, { useState, useEffect, useRef } from "react";
+import logoLight from '../assets/images/CISNBG.png';
+import logoDark from '../assets/images/CISNBG (1).png';
 
+import { FaSun } from "react-icons/fa";
+import { BsList, BsMoonStarsFill, BsX } from 'react-icons/bs';
+import ParticlesComponent from './ParticlesComponent'; 
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import '../styles/NavBar.css';
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {

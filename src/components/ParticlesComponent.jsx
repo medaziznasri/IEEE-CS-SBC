@@ -2,6 +2,7 @@ import PropTypes from "prop-types"; // Import PropTypes
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo } from "react";
 import { loadSlim } from "@tsparticles/slim";
+import '../styles/ParticlesComponent.css';
 
 const ParticlesComponent = ({ isDarkMode }) => {
   useEffect(() => {

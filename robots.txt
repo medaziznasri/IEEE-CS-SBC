@@ -2,4 +2,11 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://ieee-cis-isima.org/sitemap.xml
+
+# Prevent crawling of development assets
+Disallow: /node_modules/
+Disallow: /src/assets/
+
+# Crawl delay to respect server resources
+Crawl-delay: 10

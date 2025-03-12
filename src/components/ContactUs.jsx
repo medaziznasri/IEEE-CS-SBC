@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import '../assets/styles/ContactUs.css';
 import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import '../styles/ContactUs.css';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
