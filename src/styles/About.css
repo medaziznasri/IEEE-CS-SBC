@@ -17,7 +17,7 @@
 .about .about-image img {
   width: 100%;
   max-width: 450px;
-  height: auto;
+  height: 400px;
   object-fit: cover;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -90,6 +90,7 @@
   }
   
   .about .about-image img {
+    height: 300px;
     max-width: 350px;
     margin: 0 auto;
     display: block;
@@ -113,6 +114,7 @@
   
   .about .about-image img {
     max-width: 280px;
+    height: 200px;
     margin-bottom: 15px; 
   }
 }

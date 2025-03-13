@@ -9,6 +9,7 @@ import img7 from '../assets/images/d.png'
 import img8 from '../assets/images/IMG_6015.jpg'
 import img9 from '../assets/images/IMG_7185.JPG'
 import img10 from '../assets/images/IMG_7273.JPG'
+import img11 from '../assets/images/aboutUs.jpg'
 import welcomingvideo from '../assets/AQOK9ncphBdF-2h8ET4L5e344GuORnsjFmvVmHGFcu5QgLKfWaYqEAVr2nYm4TF0Mf07K9Giz66zybzY1QVvNj9E.mp4'
 import Typewrite from './Typewrite'
 import About from './About'
@@ -16,6 +17,7 @@ import Team from './Team'
 import Counter from './Counter'
 import FindUs from './FindUs'
 import MemberOfMonth from './MemberOfMonth'
+import VisionAndGoals from './VisionAndGoals'
 
 function Home() {
   return (
@@ -31,6 +33,10 @@ function Home() {
       <Team></Team>
 
       <About></About>
+      
+      {/* Add Vision and Goals section */}
+      <VisionAndGoals />
+      
       <div className="statics_container">
         <h2 className="section-title">Our Community in Numbers</h2>
         <div className="stats-grid">
@@ -68,6 +74,7 @@ function Home() {
               <img src={img3} alt="" />
               <img src={img4} alt="" />
               <img src={img5} alt="" />
+              <img src={img11} alt="" />
             </div>
           </div>
         </div>
@@ -92,6 +99,7 @@ function Home() {
               <img src={img7} alt="" />
               <img src={img8} alt="" />
               <img src={img9} alt="" />
+               <img src={img11} alt="" />
               <img src={img10} alt="" />
               <img src={img6} alt="" />
               <img src={img7} alt="" />

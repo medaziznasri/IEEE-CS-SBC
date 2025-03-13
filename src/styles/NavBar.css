@@ -27,11 +27,13 @@
 }
 
 .navbar {
-  position: sticky;
-  overflow: hidden;
+  position: fixed;  /* Changed from sticky to fixed for more consistent behavior */
+  top: 0;  /* Changed from 1rem to 0 to stick directly to the top */
+  left: 0;
+  right: 0;
+  overflow: visible;  /* Changed from hidden to allow proper display of dropdown elements */
   padding: 0.5rem 2rem;
-  top: 1rem;
-  margin: 1rem auto;
+  margin: 1rem auto;  /* Keep horizontal auto margin */
   height: 70px;
   display: flex;
   align-items: center;
@@ -41,11 +43,16 @@
   border: 1px solid #969da6;
   padding: 0.5rem 1.5rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  z-index: 1000;  /* Increased z-index to ensure it stays above all content */
   -webkit-border-radius: 2.125rem;
   -moz-border-radius: 2.125rem;
   -ms-border-radius: 2.125rem;
   -o-border-radius: 2.125rem;
+  transform: translateZ(0);  /* Force hardware acceleration */
+}
+
+body {
+  padding-top: calc(70px + 2rem);  /* Navbar height + top margin */
 }
 
 .navbar-particles-container {
