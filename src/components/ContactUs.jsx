@@ -178,7 +178,7 @@ const ContactUs = () => {
               </div>
               <div className="contact-details">
                 <h3>Call Us</h3>
-                <p>+216 94198625</p>
+                <p>+216 52661437</p>
               </div>
             </div>
           </div>
