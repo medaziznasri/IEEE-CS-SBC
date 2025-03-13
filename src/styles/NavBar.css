@@ -27,13 +27,12 @@
 }
 
 .navbar {
-  position: fixed;  /* Changed from sticky to fixed for more consistent behavior */
-  top: 0;  /* Changed from 1rem to 0 to stick directly to the top */
-  left: 0;
-  right: 0;
-  overflow: visible;  /* Changed from hidden to allow proper display of dropdown elements */
-  padding: 0.5rem 2rem;
-  margin: 1rem auto;  /* Keep horizontal auto margin */
+  position: fixed; /* Changed from sticky to fixed for better control */
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  margin: 0 auto;
   height: 70px;
   display: flex;
   align-items: center;
@@ -41,18 +40,14 @@
   background-color: var(--navbar-bg);
   border-radius: 2.125rem;
   border: 1px solid #969da6;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.5rem; /* Removed duplicate padding declaration */
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
-  z-index: 1000;  /* Increased z-index to ensure it stays above all content */
+  z-index: 100;
   -webkit-border-radius: 2.125rem;
   -moz-border-radius: 2.125rem;
   -ms-border-radius: 2.125rem;
   -o-border-radius: 2.125rem;
-  transform: translateZ(0);  /* Force hardware acceleration */
-}
-
-body {
-  padding-top: calc(70px + 2rem);  /* Navbar height + top margin */
+  transition: top 0.3s ease;
 }
 
 .navbar-particles-container {
@@ -187,7 +182,8 @@ body {
 @media (max-width: 768px) {
   .navbar {
     border-radius: 1.875rem;
-    margin: 0.75rem;
+    width: calc(100% - 2rem);
+    margin: 0.75rem auto;
     padding: 0.375rem 0.75rem;
   }
   
@@ -210,16 +206,25 @@ body {
   .navbar .join-us-nav{
     display: none;
   }
+  
+  .menu-panel {
+    width: 85%; /* Slightly wider on mobile */
+  }
 }
 
 @media (max-width: 480px) {
   .navbar {
     border-radius: 1.25rem;
-    margin: 0.5rem;
+    width: calc(100% - 1.5rem);
+    margin: 0.5rem auto;
   }
   
   .navbar .logo img {
     width: 6rem;
+  }
+  
+  .menu-panel {
+    width: 90%; /* Even wider on small screens */
   }
 }
 
@@ -259,7 +264,7 @@ body {
 .close-button {
   display: none;
   position: absolute;
-  top: 2.625rem;
+  top: 1.5rem;
   right: 1.25rem;
   align-items: center;
   justify-content: center;
@@ -271,6 +276,7 @@ body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  z-index: 1100; /* Above menu panel */
 }
 .navigation{
   margin-top: 1.5625rem;
@@ -370,17 +376,19 @@ body {
 .menu-panel {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Changed from flex-start to space-between */
+  justify-content: space-between;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0; /* Ensure it starts from left edge */
   background-color: var(--bg-color-menu);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 8px 0 0; /* Removed bottom padding to accommodate footer */
-  z-index: 100; /* Increase z-index to ensure it's above other elements */
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 8px 0 0;
+  z-index: 1000; /* Higher than navbar */
   width: 80%;
-  height: 100%;
+  height: 100vh; /* Full viewport height */
   animation: slide-in-left 0.5s ease-out forwards;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
 }
 .menu-panel.slide-out {
   animation: slide-out-left 0.5s ease-out forwards;
@@ -649,4 +657,45 @@ body {
     font-size: 0.75rem;
     animation: pulse-button 4s infinite; /* Slower animation for better performance */
   }
+}
+
+/* Add overlay for menu panel background */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900; /* Between navbar and menu panel */
+  display: none;
+  backdrop-filter: blur(2px);
+}
+
+.menu-overlay.active {
+  display: block;
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Prevent scrolling when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Classes for show/hide navbar on scroll */
+.navbar-hidden {
+  top: -100px;
+}
+
+.navbar-visible {
+  top: 1rem;
 }
