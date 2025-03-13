@@ -48,7 +48,7 @@ function Home() {
           </div>
           <div className="stat-item years">
             <h3>Years</h3>
-            <span className='counter'><Counter end={5} /></span>
+            <span className='counter'><Counter end={2} /></span>
             
           </div>
         </div>

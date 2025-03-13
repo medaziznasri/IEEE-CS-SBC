@@ -3,6 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import '../styles/EventDetails.css';
 import { FiCalendar, FiMapPin, FiClock, FiUsers, FiCheckCircle, FiArrowLeft, FiMaximize2 } from 'react-icons/fi';
 
+// Import the image and gallery images
+import eventImage from '../assets/images/ieee ramadhanieet.jpg';
+import { ramadhanGallery } from './GalleryImports';
+
 // Mock data - in a real app, you would fetch this from an API based on the event ID
 const eventsData = {
   1: {
@@ -12,7 +16,7 @@ const eventsData = {
     time: '17:00 PM - 3:00 AM',
     location: ' Pepiniere des Entreprises APII Mahdia',
     category: 'upcoming',
-    image: '/src/assets/images/ieee ramadhanieet.jpg',
+    image: eventImage,
     description: 'A special evening where we come together to break our fast, enjoy delicious food and create unforgettable memories.',
     overview: `Join us for our annual RamadhanIEEET celebration - a cherished tradition where we come together as a community to break our fast, share a meal, and forge lasting connections.
 
@@ -27,11 +31,7 @@ const eventsData = {
       { time: '03:00 AM', activity: 'Closing' },
     ],
    
-    gallery: [
-      '/src/assets/ramathanIEEET/IMG_5745.JPG',
-      '/src/assets/ramathanIEEET/IMG_5830.JPG',
-      
-    ],
+    gallery: ramadhanGallery,
     registrationUrl: 'https://ieee.surveysparrow.com/s/ramadhanieeet/tt-z2l6y',
     highlights: [
       'Structured networking sessions with IEEE members',
@@ -99,19 +99,21 @@ function EventDetails() {
   }
 
   const handleRegister = () => {
-    // Open the registration URL in a new tab without changing UI state
     window.open(event.registrationUrl, '_blank');
   };
 
-  const openGalleryImage = (image) => {
+  const openGalleryImage = (image, e) => {
+    e.stopPropagation();
     setSelectedImage(image);
+    document.body.style.overflow = 'hidden'; 
   };
 
   const closeGalleryImage = () => {
     setSelectedImage(null);
+    document.body.style.overflow = ''; 
   };
 
-  // Scroll to section when tab is changed
+  // Better tab handling for mobile
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
     
@@ -120,7 +122,7 @@ function EventDetails() {
       const contentSection = document.querySelector('.event-content-section');
       if (contentSection) {
         const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
-        const yOffset = -headerHeight - 20; // 20px additional offset for breathing room
+        const yOffset = -headerHeight - 10;
         const y = contentSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
@@ -129,9 +131,9 @@ function EventDetails() {
 
   return (
     <div className="event-details-page">
-      {/* Floating particles for visual effect */}
+      {/* Floating particles for visual effect - reduced number for better performance */}
       <div className="particles">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div key={i} className="particle"></div>
         ))}
       </div>
@@ -278,7 +280,7 @@ function EventDetails() {
                   <div 
                     key={idx} 
                     className="gallery-image"
-                    onClick={() => openGalleryImage(image)}
+                    onClick={(e) => openGalleryImage(image, e)}
                   >
                     <img src={image} alt={`Gallery image ${idx + 1}`} />
                     <div className="gallery-image-icon">
@@ -303,13 +305,13 @@ function EventDetails() {
         </div>
       </div>
 
-      {/* Image Lightbox */}
+      {/* Image Lightbox with improved mobile handling */}
       {selectedImage && (
         <div className="lightbox" onClick={closeGalleryImage}>
-          <div className="lightbox-content">
+          <div className="lightbox-content" onClick={e => e.stopPropagation()}>
             <img src={selectedImage} alt="Gallery view" />
           </div>
-          <button className="lightbox-close">×</button>
+          <button className="lightbox-close" onClick={closeGalleryImage}>×</button>
         </div>
       )}
     </div>

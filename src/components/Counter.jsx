@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const Counter = ({ end, duration = 2000, prefix = '', suffix = '' }) => {
+const Counter = ({ end, duration = 1000, prefix = '', suffix = '' }) => {
   const [count, setCount] = useState(0);
   const countRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);

@@ -15,9 +15,7 @@ function EventsPage() {
       category: 'upcoming',
       image: logo1,
       description: 'A special evening where we come together to break our fast, enjoy delicious food and create unforgettable memories.'
-    },
-    // Add more events for better demonstration
-   
+    },   
   ], []);
 
   const categories = [

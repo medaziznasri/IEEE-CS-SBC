@@ -200,7 +200,7 @@ function Footer() {
       {renderFooterContent()}
       
       <div className="footer-bottom">
-        <a className="footer-copyright" href="https://medaziznasri.github.io/personal_portfolio/" target="_blank">&copy; Made by Mohamed aziz Nasri - IEEE CIS ISIMA</a>
+        <a className="footer-copyright" href="https://medaziznasri.github.io/personal_portfolio/" target="_blank">&copy; Made by Mohamed Aziz Nasri  | IEEE CIS ISIMA</a>
       </div>
     </footer>
   );
