@@ -4,7 +4,6 @@ import '../styles/EventDetails.css';
 import { FiCalendar, FiMapPin, FiClock, FiUsers, FiCheckCircle, FiArrowLeft, FiMaximize2 } from 'react-icons/fi';
 
 // Import the image and gallery images
-import eventImage from '../assets/images/ieee ramadhanieet.jpg';
 import { ramadhanGallery, speakers } from './GalleryImports';
 
 // Mock data - in a real app, you would fetch this from an API based on the event ID
@@ -16,7 +15,6 @@ const eventsData = {
     time: '17:00 PM - 3:00 AM',
     location: ' Pepiniere des Entreprises APII Mahdia',
     category: 'upcoming',
-    image: eventImage,
     description: 'A special evening where we come together to break our fast, enjoy delicious food and create unforgettable memories.',
     overview: `Join us for our annual RamadhanIEEET celebration - a cherished tradition where we come together as a community to break our fast, share a meal, and forge lasting connections.
 
