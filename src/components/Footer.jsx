@@ -122,10 +122,10 @@ function Footer() {
     <div className="footer-content">
       <div className="footer-column">
         <h3>Quick Links</h3>
-        <div className="footer-links">
-          <span onClick={() => handleNavigate("/")}>Home</span>
-          <span onClick={() => handleNavigate("/events")}>Events</span>
-          <span onClick={() => handleNavigate("/contact")}>Contact</span>
+        <div className="footer-links" itemScope itemType="https://schema.org/SiteNavigationElement">
+          <span onClick={() => handleNavigate("/")} itemProp="name">Home</span>
+          <span onClick={() => handleNavigate("/events")} itemProp="name">Events</span>
+          <span onClick={() => handleNavigate("/contact")} itemProp="name">Contact</span>
         </div>
         <div className="footer-social">
           <a href="https://www.facebook.com/ieee.cis.isima" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -152,10 +152,10 @@ function Footer() {
   const renderDesktopContent = () => (
     <div className="footer-content">
       <div className="footer-column">
-        <div className="footer-links">
-          <span onClick={() => handleNavigate("/")}>Home</span>
-          <span onClick={() => handleNavigate("/events")}>Events</span>
-          <span onClick={() => handleNavigate("/contact")}>Contact</span>
+        <div className="footer-links" itemScope itemType="https://schema.org/SiteNavigationElement">
+          <span onClick={() => handleNavigate("/")} itemProp="name">Home</span>
+          <span onClick={() => handleNavigate("/events")} itemProp="name">Events</span>
+          <span onClick={() => handleNavigate("/contact")} itemProp="name">Contact</span>
         </div>
       </div>
       
@@ -194,13 +194,13 @@ function Footer() {
   };
   
   return (
-    <footer className="footer" ref={footerRef}>
+    <footer className="footer" ref={footerRef} itemScope itemType="https://schema.org/WPFooter">
       <div className="stars-container"></div>
       
       {renderFooterContent()}
       
       <div className="footer-bottom">
-        <a className="footer-copyright" href="https://medaziznasri.github.io/personal_portfolio/" target="_blank">&copy; Made by Mohamed Aziz Nasri  | IEEE CIS ISIMA</a>
+        <a className="footer-copyright" href="https://medaziznasri.github.io/personal_portfolio/" target="_blank" rel="noopener noreferrer">&copy; Made by Mohamed Aziz Nasri</a>
       </div>
     </footer>
   );

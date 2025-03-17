@@ -1,3 +1,19 @@
+/* New color scheme variables for EventDetails */
+:root {
+  /* Orange-Black Theme */
+  --event-bg-primary: #121212;
+  --event-bg-gradient: linear-gradient(135deg, #121212, #1e1e1e, #121212);
+  --event-accent: #ff6b00;
+  --event-accent-light: #ff8c38;
+  --event-accent-dark: #cc5500;
+  --event-text-primary: #ffffff;
+  --event-text-secondary: #cccccc;
+  --event-card-bg: rgba(30, 30, 30, 0.8);
+  --event-border: rgba(255, 107, 0, 0.3);
+  --event-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  --event-overlay: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+}
+
 /* Root element fixes to prevent unwanted scrollbars */
 html, body {
   overflow-x: hidden; /* Prevent horizontal scrollbar on the whole page */
@@ -7,8 +23,8 @@ html, body {
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  background: radial-gradient(circle at center, #052a4a, #041d35 30%, #03101f 70%, #020913 100%);
-  color: #f0f6fc;
+  background: var(--event-bg-gradient); /* New orange-black gradient background */
+  color: var(--event-text-primary);
   width: 100%;
   box-sizing: border-box; /* Ensure padding doesn't add width */
 }
@@ -24,18 +40,19 @@ html, body {
   z-index: 1;
 }
 
+/* Update particle colors to better match theme variables */
 .particle {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(26, 102, 194, 0.6);
+  background: rgba(255, 107, 0, 0.4); /* Orange particles */
   border-radius: 50%;
   z-index: 1;
   opacity: 0;
 }
 
 .particle:nth-child(even) {
-  background: rgba(0, 153, 204, 0.6);
+  background: rgba(255, 140, 56, 0.3); /* Lighter orange particles */
   width: 6px;
   height: 6px;
 }
@@ -80,8 +97,8 @@ html, body {
 .loading-spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid rgba(26, 102, 194, 0.2);
-  border-top: 4px solid #1a66c2;
+  border: 4px solid rgba(255, 107, 0, 0.2);
+  border-top: 4px solid var(--event-accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -102,21 +119,17 @@ html, body {
 .back-to-events {
   display: inline-block;
   margin-top: 20px;
-  background: linear-gradient(90deg, #1a66c2, #0099cc);
+  background: var(--event-accent);
   color: white;
   padding: 10px 20px;
   border-radius: 25px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;  /* Increased from 500 for better visibility */
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
-}
-
-.back-to-events:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(26, 102, 194, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* Added shadow for depth */
 }
 
 /* Hero Section */
@@ -133,13 +146,14 @@ html, body {
   justify-content: center;
 }
 
+/* Hero section overlay - use theme variables */
 .event-hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(0deg, rgba(3, 16, 31, 1) 0%, rgba(3, 16, 31, 0.85) 50%, rgba(3, 16, 31, 0.5) 100%);
+  background: var(--event-overlay); /* Simplified gradient overlay */
 }
 
 .event-hero-content {
@@ -153,38 +167,36 @@ html, body {
 
 .back-to-events-container {
   position: absolute;
-  top: -120px;
+  top: -80px;  /* Moved down from -120px for better visibility */
   left: 2rem;
+  z-index: 5;  /* Ensure it's on top of other elements */
 }
 
 .event-title {
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(90deg, #f0f6fc, #0099cc);
+
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
   line-height: 1.2;
 }
 
-.event-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
+/* Improve visibility of meta items */
 .meta-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #f0f6fc;
+  color: var(--event-text-primary);
   font-size: 1.1rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Add text shadow for better readability */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); /* Stronger text shadow */
 }
 
 .meta-item svg {
-  color: #0099cc;
+  color: var(--event-accent); /* Beige icon */
+  color: #ff8c38; /* Brighter orange */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)); /* Add shadow to icons */
 }
 
 .hero-actions {
@@ -192,7 +204,7 @@ html, body {
 }
 
 .register-btn {
-  background: linear-gradient(90deg, #1a66c2, #0099cc);
+  background: linear-gradient(to right, #ff6b00, #ff8c38); /* Enhanced orange gradient */
   color: white;
   border: none;
   padding: 0.8rem 2rem;
@@ -205,34 +217,35 @@ html, body {
 
 .register-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(26, 102, 194, 0.5);
-  background: linear-gradient(90deg, #0d59b3, #0085b3);
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.6); /* Stronger glow effect */
+  background: linear-gradient(to right, #ff8c38, #ff9d4f); /* Lighter on hover */
 }
 
 .registered-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(26, 102, 194, 0.2);
+  background: rgba(201, 188, 156, 0.2); /* Beige background */
   padding: 0.8rem 1.5rem;
   border-radius: 30px;
   font-size: 1.1rem;
-  color: #f0f6fc;
+  color: #f0f0f0;
 }
 
 .registered-badge svg {
-  color: #0099cc;
+  color: #c9bc9c; /* Beige icon */
 }
 
 /* Navigation Header - Improved version */
+/* Make navigation header use theme colors */
 .event-nav-header {
-  background: rgba(3, 16, 31, 0.95);
+  background: rgba(18, 18, 18, 0.95); /* Dark transparent background */
   padding: 1rem 0;
   position: sticky;
   top: 0;
   transition: all 0.3s ease;
-  z-index: 1;
-  border-bottom: 1px solid rgba(26, 102, 194, 0.2);
+  z-index: 10; /* Increased z-index */
+  border-bottom: 1px solid var(--event-border);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   -webkit-transition: all 0.3s ease;
@@ -242,8 +255,8 @@ html, body {
 }
 
 .header-scrolled {
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-  background: rgba(2, 9, 19, 0.98);
+  box-shadow: var(--event-shadow);
+  background: rgba(12, 12, 12, 0.98); /* Darker when scrolled */
 }
 
 .event-nav-container {
@@ -262,10 +275,7 @@ html, body {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 300px;
-  background: linear-gradient(90deg, #f0f6fc, #0099cc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--event-text-primary); /* Use solid color instead of gradient */
 }
 
 .event-tabs {
@@ -286,7 +296,7 @@ html, body {
 .tab-btn {
   background: transparent;
   border: none;
-  color: #f0f6fc;
+  color: var(--event-text-secondary);
   padding: 0.5rem 0.8rem;
   cursor: pointer;
   position: relative;
@@ -299,12 +309,12 @@ html, body {
 
 .tab-btn:hover {
   opacity: 1;
-  color: #0099cc;
+  color: var(--event-accent-light);
 }
 
 .tab-btn.active {
   opacity: 1;
-  color: #0099cc;
+  color: var(--event-accent);
 }
 
 .tab-btn.active::after {
@@ -315,17 +325,21 @@ html, body {
   transform: translateX(-50%);
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, #1a66c2, #0099cc);
+  background: #ff6b00; /* Pure orange */
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 153, 204, 0.5);
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.6); /* Enhanced glow */
 }
 
 /* Content Section */
 .event-content-section {
   padding: 3rem 0;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
+  width: 95%;
+  margin: 0 auto;
+  background: rgba(30, 30, 30, 0.6); /* Semi-transparent dark background */
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: var(--event-shadow);
+  border: 1px solid var(--event-border);
 }
 
 .event-content-container {
@@ -338,27 +352,27 @@ html, body {
 }
 
 /* Overview Tab */
-.overview-section {
-  margin-bottom: 3rem;
-}
-
+/* Update section titles to match site theme */
 .overview-tab h2,
 .agenda-tab h2,
 .speakers-tab h2,
 .gallery-tab h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  background: linear-gradient(90deg, #f0f6fc, #0099cc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--event-accent); /* Simple color instead of gradient */
+  font-weight: 700;
   display: inline-block;
 }
 
+.overview-section {
+  margin-bottom: 3rem;
+}
+
+/* Content text color improvements */
 .overview-text {
   line-height: 1.8;
   font-size: 1.1rem;
-  color: #b8c2d0;
+  color: var(--event-text-primary); /* Use theme text color instead of hardcoded color */
 }
 
 .overview-text p {
@@ -374,26 +388,27 @@ html, body {
   gap: 1.5rem;
 }
 
+/* Improve content area backgrounds */
 .highlight-item {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  background: rgba(26, 102, 194, 0.1);
+  background: rgba(40, 40, 40, 0.6); /* Darker card background */
   padding: 1.2rem;
   border-radius: 12px;
   transition: all 0.3s ease;
-  border: 1px solid rgba(26, 102, 194, 0.2);
+  border: 1px solid var(--event-border);
 }
 
 .highlight-item:hover {
   transform: translateY(-5px);
-  background: rgba(26, 102, 194, 0.15);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(26, 102, 194, 0.3);
+  background: rgba(50, 50, 50, 0.7); /* Lighter on hover */
+  box-shadow: var(--event-shadow);
+  border: 1px solid var(--event-accent);
 }
 
 .highlight-icon {
-  color: #0099cc;
+  color: var(--event-accent);
   font-size: 1.2rem;
   flex-shrink: 0;
 }
@@ -401,6 +416,7 @@ html, body {
 .highlight-text {
   font-size: 1rem;
   line-height: 1.5;
+  color: var(--event-text-primary);
 }
 
 /* Agenda Tab */
@@ -417,8 +433,8 @@ html, body {
   bottom: 0;
   left: 8px;
   width: 2px;
-  background: linear-gradient(to bottom, #1a66c2, #0099cc);
-  opacity: 0.6;
+  background: linear-gradient(to bottom, #ff6b00, #cc5500); /* Solid orange gradient */
+  opacity: 0.8; /* Make it more visible */
 }
 
 .agenda-item {
@@ -452,9 +468,10 @@ html, body {
   }
 }
 
+/* Fix content section text colors */
 .agenda-time {
   min-width: 80px;
-  color: #0099cc;
+  color: var(--event-accent);
   font-weight: 600;
 }
 
@@ -472,20 +489,22 @@ html, body {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: linear-gradient(to right, #1a66c2, #0099cc);
-  box-shadow: 0 0 10px rgba(0, 153, 204, 0.6);
+  background: #ff6b00; /* Pure orange color */
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.8); /* Enhanced glow */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Subtle border for definition */
 }
 
+/* Improve content area backgrounds */
 .agenda-content {
-  background: rgba(26, 102, 194, 0.1);
+  background: rgba(40, 40, 40, 0.6);
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid rgba(26, 102, 194, 0.2);
+  border: 1px solid var(--event-border);
 }
 
 .agenda-content:hover {
-  background: rgba(26, 102, 194, 0.15);
-  border: 1px solid rgba(26, 102, 194, 0.3);
+  background: rgba(50, 50, 50, 0.7);
+  border: 1px solid var(--event-accent);
 }
 
 /* Speakers Tab */
@@ -500,12 +519,12 @@ html, body {
 }
 
 .speaker-card {
-  background: rgba(16, 26, 42, 0.8);
+  background: rgba(40, 40, 40, 0.7);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.35);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 1px solid rgba(26, 102, 194, 0.2);
+  border: 1px solid var(--event-border);
   backdrop-filter: blur(12px);
   transform: translateY(15px);
   opacity: 0;
@@ -532,7 +551,7 @@ html, body {
 .speaker-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(26, 102, 194, 0.4);
+  border: 1px solid var(--event-accent);
 }
 
 .speaker-image {
@@ -564,10 +583,11 @@ html, body {
   justify-content: center;
 }
 
+/* Fix speaker-card content to match theme */
 .speaker-name {
   font-size: 0.95rem;
   margin-bottom: 0.1rem;
-  color: #f0f6fc;
+  color: var(--event-text-primary);
   line-height: 1.2;
   font-weight: 600;
   white-space: nowrap;
@@ -576,7 +596,7 @@ html, body {
 }
 
 .speaker-title {
-  color: #0099cc;
+  color: var(--event-accent);
   font-size: 0.75rem;
   margin-bottom: 0;
   font-weight: 400;
@@ -584,10 +604,7 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.speaker-bio {
-  display: none; /* Hide bio for cleaner cards */
+  color: #ff8c38; /* Brighter orange for better visibility */
 }
 
 /* Gallery Tab */
@@ -652,20 +669,20 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.7);
-  color: #0099cc;
+  color: var(--event-accent);
   font-size: 2rem;
   opacity: 0;
   z-index: 3;
   transition: all 0.3s ease;
-  background: rgba(3, 16, 31, 0.8);
+  background: rgba(30, 30, 30, 0.8);
   width: 50px;
   height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 15px rgba(0, 153, 204, 0.5);
-  border: 1px solid rgba(0, 153, 204, 0.3);
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+  border: 1px solid rgba(255, 107, 0, 0.3);
 }
 
 .gallery-image:hover .gallery-image-icon {
@@ -752,10 +769,10 @@ html, body {
 
 /* Registration CTA */
 .registration-cta {
-  background: linear-gradient(135deg, rgba(26, 102, 194, 0.1) 0%, rgba(0, 153, 204, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), rgba(0, 0, 0, 0.4));
   padding: 4rem 2rem;
-  border-top: 1px solid rgba(26, 102, 194, 0.2);
-  border-bottom: 1px solid rgba(26, 102, 194, 0.2);
+  border-top: 1px solid var(--event-border);
+  border-bottom: 1px solid var(--event-border);
   margin-top: 2rem;
   text-align: center;
 }
@@ -768,21 +785,20 @@ html, body {
 .cta-content h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  background: linear-gradient(90deg, #f0f6fc, #0099cc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--event-accent);
   display: inline-block;
+  font-weight: 700;
 }
 
+/* Registration section improvements */
 .cta-content p {
   font-size: 1.1rem;
-  color: #b8c2d0;
+  color: var(--event-text-primary);
   margin-bottom: 2rem;
 }
 
 .register-cta-btn {
-  background: linear-gradient(90deg, #1a66c2, #0099cc);
+  background: linear-gradient(to right, #ff6b00, #ff8c38);
   color: white;
   border: none;
   padding: 1rem 2.5rem;
@@ -791,29 +807,29 @@ html, body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(26, 102, 194, 0.4);
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.5); /* Stronger shadow */
 }
 
 .register-cta-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(26, 102, 194, 0.6);
-  background: linear-gradient(90deg, #0d59b3, #0085b3);
+  box-shadow: 0 15px 30px rgba(255, 107, 0, 0.7); /* Enhanced glow effect */
+  background: linear-gradient(to right, #ff8c38, #ff9d4f); /* Lighter orange gradient on hover */
 }
 
 .registered-message {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(26, 102, 194, 0.15);
+  background: rgba(255, 107, 0, 0.15);
   padding: 1rem 2rem;
   border-radius: 30px;
   font-size: 1.1rem;
-  color: #f0f6fc;
-  border: 1px solid rgba(0, 153, 204, 0.3);
+  color: #f0f0f0;
+  border: 1px solid rgba(255, 107, 0, 0.3);
 }
 
 .registered-message svg {
-  color: #0099cc;
+  color: var(--event-accent);
   font-size: 1.4rem;
 }
 
@@ -882,6 +898,10 @@ html, body {
   .agenda-timeline::before {
     left: 6px;
   }
+  
+  .back-to-events-container {
+    top: -70px;  /* Further reduced distance from top */
+  }
 }
 
 @media (max-width: 768px) {
@@ -901,7 +921,7 @@ html, body {
   }
   
   .back-to-events-container {
-    top: -80px;
+    top: -70px;  /* Further reduced distance from top */
   }
   
   .highlight-item {
@@ -993,6 +1013,7 @@ html, body {
   
   .event-title {
     font-size: 1.6rem;
+    text-shadow: 0 1px 3px rgb(239, 144, 1); /* Add text shadow for better readability */
   }
   
   .event-hero-content {
@@ -1000,8 +1021,11 @@ html, body {
   }
   
   .back-to-events-container {
-    top: -60px;
-    left: 1rem;
+    top: -60px; 
+    left: 50%;  /* Center horizontally */
+    transform: translateX(-50%);  /* Center alignment trick */
+    width: 100%;  /* Full width container */
+    text-align: center;  /* Center the button */
   }
   
   .register-btn {
@@ -1013,6 +1037,12 @@ html, body {
     padding: 0 1rem;
   }
   
+  .event-content-section {
+    background: rgba(25, 25, 25, 0.85); /* Darker, more opaque background */
+    width: 98%;
+    border: 1px solid rgba(255, 107, 0, 0.4); /* More visible border */
+  }
+  
   .highlights-list {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -1020,6 +1050,8 @@ html, body {
   
   .highlight-item {
     padding: 0.8rem;
+    background: rgba(50, 50, 50, 0.8); /* Darker background for better contrast */
+    border: 1px solid rgba(255, 107, 0, 0.4); /* More visible orange border */
   }
   
   .speakers-grid {
@@ -1054,6 +1086,7 @@ html, body {
   
   .event-nav-header {
     padding: 0.8rem 0;
+    background: rgba(15, 15, 15, 0.97); /* Nearly opaque for better readability */
   }
   
   .event-nav-container {
@@ -1097,6 +1130,8 @@ html, body {
   .overview-text {
     font-size: 0.9rem;
     line-height: 1.6;
+    color: #ffffff; /* Ensure white text for better contrast */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
   }
   
   .overview-text p {
@@ -1125,71 +1160,153 @@ html, body {
   
   /* Fix hero section for mobile */
   .event-hero-overlay {
-    background: linear-gradient(0deg, rgba(4, 21, 37, 1) 0%, rgba(4, 21, 37, 0.9) 50%, rgba(4, 21, 37, 0.7) 100%);
+    background: var(--event-overlay); /* Use the same overlay variable for consistency */
   }
 }
 
-@media (max-width: 400px) {
-  .event-nav-title {
-    font-size: 0.9rem;
-    max-width: 200px;
+@media (max-width: 480px) {
+  /* Fixed header bar for "Back to Events" on very small screens */
+  .back-to-events-container {
+    position: fixed;  /* Switch to fixed positioning */
+    top: 10px;  /* Place near the top of the screen */
+    width: auto;  /* Auto width instead of 100% */
+    transform: none;  /* Remove centering transform */
+    left: 10px;  /* Position in left corner */
+    z-index: 100;  /* Ensure it's above everything */
   }
   
-  .event-title {
-    font-size: 1.4rem;
-  }
-  
-  .meta-item {
+  .back-to-events {
+    padding: 6px 16px;
     font-size: 0.85rem;
-    gap: 5px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
   }
   
-  .agenda-item {
-    margin-bottom: 1.2rem;
+  .event-hero-overlay {
+    /* Create slightly different overlay for very small screens - still using orange theme */
+    background: linear-gradient(0deg, 
+      rgba(18, 18, 18, 0.9) 0%,
+      rgba(18, 18, 18, 0.7) 50%, 
+      rgba(18, 18, 18, 0.5) 100%);
+  }
+  
+  /* Add subtle orange accent to hero overlay on small screens */
+  .event-hero-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba(255, 107, 0, 0.3) 0%,
+      transparent 50%);
+    pointer-events: none;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 375px) {
+  .tab-btn {
+    color: #e0e0e0; /* Brighter text for better visibility */
+    font-size: 0.78rem; /* Slightly smaller to fit */
+    padding: 0.25rem 0.3rem;
+  }
+  
+  .tab-btn.active {
+    color: #ff8c38; /* Brighter orange for active tab */
+    font-weight: 600; /* Make active tab bolder */
+  }
+  
+  .event-nav-title {
+    font-size: 0.85rem; /* Smaller to ensure it fits */
+  }
+  
+  /* Remove subtler visual elements on very small screens */
+  .particle:nth-child(even),
+  .particle:nth-child(5),
+  .particle:nth-child(6),
+  .particle:nth-child(7) {
+    display: none; /* Hide some particles for better performance and less visual noise */
+  }
+}
+
+/* Fix for dark backgrounds on hero section */
+.event-hero-overlay {
+  background: linear-gradient(0deg, 
+    rgba(0, 0, 0, 0.85) 0%, 
+    rgba(0, 0, 0, 0.6) 50%, 
+    rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Landscape mode fixes for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .event-hero {
+    min-height: 160px; /* Even shorter for landscape */
+  }
+  
+  .event-content-section {
+    padding-top: 1rem;
+  }
+  
+  .event-nav-header {
+    padding: 0.4rem 0;
   }
   
   .overview-tab h2,
   .agenda-tab h2,
   .speakers-tab h2,
   .gallery-tab h2 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-  }
-  
-  .back-to-events {
-    font-size: 0.85rem;
-    padding: 8px 15px;
-  }
-  
-  /* Fix small screen tab navigation */
-  .event-tabs {
-    justify-content: flex-start;
-    gap: 0.6rem;
-  }
-  
-  .tab-btn {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.4rem;
-  }
-  
-  /* Fix lightbox close button on small screens */
-  .lightbox-close {
-    top: 10px;
-    right: 10px;
     font-size: 1.5rem;
-    width: 30px;
-    height: 30px;
+    margin-bottom: 0.8rem;
   }
-
-  /* Fix spacing in agenda items */
-  .agenda-timeline {
-    padding-left: 1.2rem;
+  
+  .registration-cta {
+    padding: 2rem 1rem;
   }
+}
 
+/* Improve tablet layout */
+@media (min-width: 577px) and (max-width: 768px) {
+  .event-content-section {
+    width: 96%;
+    border-radius: 18px;
+  }
+  
+  .event-nav-header {
+    background: rgba(18, 18, 18, 0.95);
+  }
+  
+  .speakers-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.9rem;
+  }
+  
+  /* Better spacing for tablets */
+  .event-hero-content {
+    padding: 1.8rem;
+  }
+  
+  .overview-tab h2,
+  .agenda-tab h2,
+  .speakers-tab h2,
+  .gallery-tab h2 {
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* High-DPI screens - sharper shadows and borders */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+  .tab-btn.active::after {
+    height: 2px; /* Thinner line for retina displays */
+    box-shadow: 0 0 8px rgba(255, 107, 0, 0.7); /* Sharper glow */
+  }
+  
+  .event-content-section {
+    border: 0.5px solid var(--event-border); /* Thinner border */
+  }
+  
   .agenda-dot {
-    left: -1.2rem;
-    width: 10px;
-    height: 10px;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.7); /* Refined shadow */
   }
 }
 
@@ -1212,3 +1329,77 @@ html, body {
     overflow-x: clip; /* Modern browsers support 'clip' which is better than hidden */
   }
 }
+
+/* Add dark mode support for gold theme */
+body.dark-mode .event-details-page {
+  /* Background now comes from global theme */
+  color: #e8e8e8; /* Keep the text color adjustment */
+}
+
+body.dark-mode .event-nav-header {
+  background: rgba(42, 33, 15, 0.95);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+body.dark-mode .header-scrolled {
+  background: rgba(37, 28, 13, 0.98);
+}
+
+body.dark-mode .agenda-timeline::before {
+  background: linear-gradient(to bottom, #ff6b00, #cc5500);
+}
+
+body.dark-mode .agenda-dot {
+  background: #ff6b00;
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.8);
+}
+
+body.dark-mode .highlight-item,
+body.dark-mode .agenda-content {
+  background: rgba(230, 192, 96, 0.07);
+  border: 1px solid rgba(230, 192, 96, 0.15);
+}
+
+body.dark-mode .highlight-item:hover,
+body.dark-mode .agenda-content:hover {
+  background: rgba(230, 192, 96, 0.12);
+  border: 1px solid rgba(230, 192, 96, 0.25);
+}
+
+body.dark-mode .tab-btn.active::after {
+  background: #ff6b00;
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
+
+body.dark-mode .speaker-card {
+  background: rgba(53, 42, 18, 0.8);
+  border: 1px solid rgba(230, 192, 96, 0.15);
+}
+
+body.dark-mode .speaker-card:hover {
+  border: 1px solid rgba(230, 192, 96, 0.3);
+}
+
+body.dark-mode .register-btn,
+body.dark-mode .register-cta-btn {
+  background: linear-gradient(to right, #ff6b00, #ff8c38);
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.4);
+}
+
+body.dark-mode .register-btn:hover,
+body.dark-mode .register-cta-btn:hover {
+  background: linear-gradient(to right, #ff8c38, #ff9d4f);
+  box-shadow: 0 15px 30px rgba(255, 107, 0, 0.6);
+}
+
+body.dark-mode .event-details-page {
+  /* Same background for both light and dark mode */
+  background: var(--event-bg-gradient);
+  color: var(--event-text-primary);
+}
+
+body.dark-mode .tab-btn.active::after {
+  background: var(--event-accent);
+}
+
+/* Keep all mobile media queries intact */

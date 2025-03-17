@@ -2,5 +2,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://ieee-cis-isima.org/sitemap.xml
+# Sitemaps
+Sitemap: https://cis-isima.ieee.tn/sitemap.xml

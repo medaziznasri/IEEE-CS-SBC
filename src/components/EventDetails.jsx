@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
-import { useParams, Link, useSearchParams, useNavigate } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import '../styles/EventDetails.css';
 import { FiCalendar, FiMapPin, FiClock, FiUsers, FiCheckCircle, FiArrowLeft, FiMaximize2 } from 'react-icons/fi';
 
@@ -34,6 +34,8 @@ const eventsData = {
         title: 'Cybersecurity Analyst',
         image: speakers[0]
       },
+   
+
     
     ],
     gallery: ramadhanGallery,
@@ -61,7 +63,11 @@ const EventHero = memo(({ event, handleRegister }) => (
           <FiArrowLeft /> Back to Events
         </Link>
       </div>
-      <h1 className="event-title">{event.title}</h1>
+      <h1 className="event-title" style={{ 
+        fontSize: window.innerWidth < 576 ? 'clamp(1.4rem, 5vw, 1.8rem)' : 'clamp(2rem, 5vw, 2.5rem)'
+      }}>
+        {event.title}
+      </h1>
       <div className="event-meta">
         <div className="meta-item">
           <FiCalendar aria-hidden="true" />
@@ -115,6 +121,13 @@ const GalleryImage = memo(({ image, index, openGalleryImage }) => (
       src={image} 
       alt={`Event gallery image ${index + 1}`} 
       loading="lazy"
+      width="300"
+      height="200"
+      decoding="async"
+      onError={(e) => {
+        e.target.onerror = null;
+        e.target.src = 'https://via.placeholder.com/300x200?text=Image+Not+Available';
+      }}
     />
     <div className="gallery-image-icon">
       <FiMaximize2 aria-hidden="true" />
@@ -278,13 +291,20 @@ function EventDetails() {
   const openGalleryImage = (image, e) => {
     e.preventDefault();
     e.stopPropagation();
+    
     setSelectedImage(image);
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
+    
+    // Add class for mobile-specific styling
+    if (window.innerWidth < 576) {
+      document.body.classList.add('mobile-lightbox-active');
+    }
   };
 
   const closeGalleryImage = () => {
     setSelectedImage(null);
-    document.body.style.overflow = ''; 
+    document.body.style.overflow = '';
+    document.body.classList.remove('mobile-lightbox-active');
   };
 
   // Better tab handling with improved mobile scrolling and URL persistence
@@ -336,15 +356,30 @@ function EventDetails() {
   }
 
   return (
-    <div className="event-details-page">
+    <div className="event-details-page" itemScope itemType="https://schema.org/Event">
       {/* Optimize particle rendering for performance */}
       <div className="particles" aria-hidden="true">
-        {[...Array(Math.min(window.innerWidth < 576 ? 4 : 8, 8))].map((_, i) => (
+        {[...Array(window.innerWidth < 480 ? 4 : window.innerWidth < 768 ? 6 : 8)].map((_, i) => (
           <div key={i} className="particle"></div>
         ))}
       </div>
 
       <EventHero event={event} handleRegister={handleRegister} />
+      
+      {/* Hidden SEO metadata */}
+      <div style={{ display: 'none' }}>
+        <meta itemProp="name" content={event.title} />
+        <meta itemProp="startDate" content={event.date} />
+        <meta itemProp="description" content={event.description} />
+        <div itemProp="location" itemScope itemType="https://schema.org/Place">
+          <meta itemProp="name" content={event.location} />
+        </div>
+        <meta itemProp="eventStatus" content="https://schema.org/EventScheduled" />
+        <div itemProp="organizer" itemScope itemType="https://schema.org/Organization">
+          <meta itemProp="name" content="IEEE CIS ISIMA SBC" />
+          <meta itemProp="url" content="https://cis-isima.ieee.tn" />
+        </div>
+      </div>
 
       {/* Navigation Header */}
       <div className="event-nav-header" ref={headerRef} role="navigation">
@@ -357,6 +392,7 @@ function EventDetails() {
               onClick={() => handleTabChange('overview')}
               aria-selected={activeTab === 'overview'}
               role="tab"
+              style={{ touchAction: 'manipulation' }} // Improve touch behavior
             >
               Overview
             </button>

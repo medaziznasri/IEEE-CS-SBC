@@ -1,4 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@800&display=swap');
+/* Remove external Google Fonts import */
+/* @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;800&display=swap'); */
+
+/* Define local font faces instead */
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/work-sans-v18-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/work-sans-v18-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/work-sans-v18-latin-800.woff2') format('woff2');
+}
+
+/* Add Poppins font faces for hero section */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/poppins-v20-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/poppins-v20-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/poppins-v20-latin-800.woff2') format('woff2');
+}
 
 /* Base spacing and rhythm variables */
 :root {
@@ -20,7 +71,6 @@ html {
   scroll-behavior: smooth;
   height: 100%;
   width: 100%;
-
 }
 
 body.light-mode {
@@ -30,21 +80,20 @@ body.light-mode {
   --navbar-bg: #ffffff;
   --icon-color: #000000;
   --resume-color: #ffffff;
-  --skills-bg: #0f6da7b8;
-  --skills-box: #009bff;
-  --tech-bg: #e22c4146;
+  --skills-bg: #d6900dce;
+  --skills-box: #ff6d00;
+      --tech-bg: #e22c4146;
   --bg-color-menu:#ffffff;
 }
 
 body.dark-mode {
-  --bg-color: linear-gradient(90deg,rgb(10, 44, 62) 5%, rgb(0, 0, 0) 90%);
-  --bg-color-app: #121212ed;
+  --bg-color: linear-gradient(90deg, rgb(218, 90, 5) 5%, rgb(0, 0, 0) 90%);  --bg-color-app: #121212ed;
   --text-color: #ffffff;
-  --navbar-bg: #090e12;
+  --navbar-bg: #2d1a0b;
   --icon-color: #ffffff;
   --resume-color: #000000;
   --skills-bg: #7d7d7d1a;
-  --skills-box: #00f3ff;
+  --skills-box: #fbe1ba;
   --tech-bg: #1dd3be42;
   --bg-color-menu: rgb(2, 8, 11);
 }
@@ -57,7 +106,12 @@ body {
   /* Ensure we take the full viewport height properly */
   min-height: 100%;
   
+  /* Optimize text rendering */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 * {
   margin: 0px;
   padding: 0px;
@@ -68,11 +122,17 @@ body {
 
 /* Make sure we have RGB variables for gradient effects */
 :root {
-  --skills-box-rgb: 0, 155, 255;
+  --skills-box-rgb: 255, 109, 0; /* Updated from blue to orange to match light mode */
+  
+  /* Colors for light and dark mode */
+  --body-bg-light: #ffffff;
+  --text-color-light: #000000;
+  --body-bg-dark: linear-gradient(90deg,rgb(10, 44, 62) 5%, rgb(0, 0, 0) 90%);
+  --text-color-dark: #ffffff;
 }
 
 body.dark-mode {
-  --skills-box-rgb: 0, 243, 255;
+  --skills-box-rgb: 251, 225, 186; /* Updated to match the tan/beige color in dark mode */
 }
 
 /* Scroll margin for anchor targets to account for fixed header */
@@ -85,11 +145,58 @@ body.dark-mode {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
 .scroll-reveal.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Print styles - optimize for printing */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  
+  .navbar, .footer, .menu-button, .social-links {
+    display: none !important;
+  }
+  
+  a {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+  
+  /* Ensure content is readable when printed */
+  .event-details-page, .contact-us-container, .home_container {
+    background: none !important;
+    color: #000 !important;
+  }
+  
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
 }
 
 /* Add scroll-specific optimizations for mobile devices */

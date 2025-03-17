@@ -168,7 +168,7 @@ const ContactUs = () => {
               </div>
               <div className="contact-details">
                 <h3>Email Us</h3>
-                <p>ieee.cis.isima@ieee.org</p>
+                <p>ieee.cs.isima@ieee.org</p>
               </div>
             </div>
             
@@ -178,7 +178,7 @@ const ContactUs = () => {
               </div>
               <div className="contact-details">
                 <h3>Call Us</h3>
-                <p>+216 52661437</p>
+                <p>+216 94198625</p>
               </div>
             </div>
           </div>

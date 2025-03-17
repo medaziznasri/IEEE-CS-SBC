@@ -9,18 +9,21 @@ function About() {
       <div className="about">
        
           <div className="about-image">
-            <img src={image} alt="" />
+            <img src={image} alt="IEEE Computer Society ISIMA" />
         </div>
         <div className="para">
-          <span className="myName"> WHO ARE WE ?</span>
-          <p>
-          The IEEE Computational Intelligence Society (CIS) Student Branch Chapter at ISIMA is committed to driving advancements in the field of computational intelligence, encompassing cutting-edge areas such as artificial intelligence, neural networks, evolutionary computation, and beyond. 
-            <br />
-            <br />
-            Through organizing conferences, workshops, and seminars, as well as publishing research in leading journals, the CIS ISIMA SBC aims to foster innovation and facilitate knowledge exchange among students, researchers, and industry professionals. 
-            <br />
-            <br />By promoting collaboration and providing a platform for learning and growth, the chapter empowers its members to contribute to the ever-evolving landscape of computational intelligence, shaping the future of technology and its applications for the betterment of society.
-          </p>
+          <h2 className="section-title">WHO ARE WE?</h2>
+          <div className="about-content">
+            <p>
+              The IEEE Computer Society (CS) Student Branch Chapter at ISIMA is dedicated to advancing the theory, practice, and application of computer and information processing science and technology. We serve as a hub for students passionate about computing technologies and their practical applications.
+            </p>
+            <p>
+              Through organizing technical workshops, coding competitions, industry talks, and collaborative projects, our chapter provides an environment where students can enhance their technical skills and professional development in the computing field.
+            </p>
+            <p>
+              By connecting members with industry professionals, academic researchers, and the global IEEE CS community, we create opportunities for networking, mentorship, and career growth. The IEEE CS ISIMA Chapter is committed to fostering innovation and excellence in computing, preparing the next generation of technology leaders to address real-world challenges through computing solutions.
+            </p>
+          </div>
         </div>
       </div>
     </div>

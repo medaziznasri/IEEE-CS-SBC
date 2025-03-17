@@ -40,10 +40,10 @@ const ParticlesComponent = ({ isDarkMode }) => {
       },
       particles: {
         color: {
-          value: isDarkMode ? "#00f3ff" : "#0066ff", // Updated colors for both modes
+          value: isDarkMode ? "#fbe1ba" : "#ff6d00", // Updated to match theme colors
         },
         links: {
-          color: isDarkMode ? "#00f3ff" : "#0066ff", // Matching link colors 
+          color: isDarkMode ? "#fbe1ba" : "#ff6d00", // Updated to match theme colors
           distance: 45, 
           enable: true,
           opacity: 0.4,

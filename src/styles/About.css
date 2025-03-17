@@ -1,3 +1,8 @@
+.about-container {
+  overflow: hidden;
+  position: relative;
+}
+
 .about {
   display: flex;
   justify-content: space-between;
@@ -5,13 +10,16 @@
   margin: var(--section-spacing-lg) auto 0;
   max-width: 1200px;
   padding: 0 20px;
-  gap: 40px;
+  gap: 50px;
 }
 
 .about .about-image {
   flex: 0 0 45%;
   display: flex;
   justify-content: center;
+  transform: translateX(-10px);
+  opacity: 0;
+  animation: fadeInLeft 0.8s ease-out forwards 0.2s;
 }
 
 .about .about-image img {
@@ -20,80 +28,150 @@
   height: 400px;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about .about-image img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .about .para {
   flex: 0 0 50%;
   color: var(--text-color);
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Poppins', sans-serif;
+  transform: translateX(10px);
+  opacity: 0;
+  animation: fadeInRight 0.8s ease-out forwards 0.4s;
 }
 
-.about .para .myName {
+/* Section title styling with explicit color overrides */
+.about .para .section-title {
   font-size: 42px;
-  font-family: sans-serif;
-  font-weight: 600;
-  color: var(--text-color);
-  margin-bottom: 20px;
+  font-weight: 700;
+  color: var(--skills-box) !important; /* Using !important to override any blue color */
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
   transition: color 0.3s ease;
+  /* Explicitly prevent blue color */
+  -webkit-text-fill-color: var(--skills-box);
 }
 
-.about .para .myName:hover {
-  color: var(--skills-box);
+/* Ensure no link colors are inherited */
+.about .para .section-title a {
+  color: inherit !important;
+  text-decoration: none;
 }
 
-.about .para p {
+.about .para .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--skills-box);
+  transition: width 0.3s ease;
+}
+
+.about .para .section-title:hover::after {
+  width: 100%;
+}
+
+.about-content p {
   line-height: 1.8;
   font-size: 16px;
+  margin-bottom: 16px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.about-content p:hover {
+  opacity: 1;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Responsive styles */
 @media (max-width: 992px) {
   .about {
-    gap: 30px;
+    gap: 40px;
     margin-top: var(--section-spacing-md);
   }
   
-  .about .para .myName {
-    font-size: 36px;
+  .about .para .section-title {
+    font-size: 38px;
   }
   
   .about .about-image img {
     max-width: 400px;
   }
 }
+
 @media (max-width: 768px) {
   .about {
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     margin-top: var(--section-spacing-sm);
+    text-align: center;
   }
   
   .about .para,
   .about .about-image {
     flex: 0 0 100%;
     width: 100%;
+    transform: none;
+    animation: fadeIn 1s ease-out forwards;
   }
   
-  .about .para {
-    text-align: center;
-    margin-top: 20px;
+  .about .para .section-title {
+    font-size: 34px;
+    margin-bottom: 20px;
   }
   
-  .about .para .myName {
-    font-size: 30px;
-    margin-bottom: 15px;
+  .about .para .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .about .about-image img {
-    height: 300px;
-    max-width: 350px;
+    height: 320px;
+    max-width: 380px;
     margin: 0 auto;
     display: block;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -101,20 +179,44 @@
   .about {
     margin-top: var(--section-spacing-xs);
     padding: 0 15px;
+    gap: 25px;
   }
   
-  .about .para .myName {
-    font-size: 26px;
+  .about .para .section-title {
+    font-size: 28px;
   }
   
-  .about .para p {
+  .about-content p {
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.7;
+    margin-bottom: 14px;
   }
   
   .about .about-image img {
-    max-width: 280px;
-    height: 200px;
-    margin-bottom: 15px; 
+    max-width: 300px;
+    height: 250px;
+  }
+}
+
+/* Dark mode enhancements */
+body.dark-mode .about .about-image img {
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+}
+
+/* Add explicit light/dark mode overrides to prevent blue */
+body.light-mode .about .para .section-title {
+  color: #ff6d00 !important; /* Orange in light mode */
+  -webkit-text-fill-color: #ff6d00;
+}
+
+body.dark-mode .about .para .section-title {
+  color: #fbe1ba !important; /* Beige in dark mode */
+  -webkit-text-fill-color: #fbe1ba;
+}
+
+/* Animation for users who don't prefer reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .about .about-image, .about .para {
+    will-change: transform, opacity;
   }
 }

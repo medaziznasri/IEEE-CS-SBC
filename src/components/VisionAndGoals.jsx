@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { FaLaptopCode, FaUsers, FaGlobeAmericas } from 'react-icons/fa';
+import { FaServer, FaGraduationCap, FaNetworkWired } from 'react-icons/fa';
 import '../styles/VisionAndGoals.css';
 
 const VisionAndGoals = () => {
@@ -42,23 +42,16 @@ const VisionAndGoals = () => {
       <div className="vision-container">
         <div className="vision-header">
           <h2>Our Vision</h2>
-          <div className="vision-line"></div>
         </div>
         
         <div className="vision-statement">
-          <div className="vision-orb">
-            <div className="orbit orbit-1"></div>
-            <div className="orbit orbit-2"></div>
-            <div className="orbit orbit-3"></div>
-          </div>
-          
           <p className="vision-text">
-            The IEEE ISIMA CIS Chapter aims to exceed expectations by becoming a 
-            leading force in fostering <span className="highlight">innovation</span>, 
-            <span className="highlight">collaboration</span>, and <span className="highlight">excellence</span> in 
-            Computational Intelligence. Through strategic initiatives and a dedicated team, 
-            we strive to create an environment where knowledge, skills, 
-            and creativity thrive.
+            The IEEE Computer Society Chapter at ISIMA aims to be the leading community for 
+            <span className="highlight"> computing professionals</span> and students by fostering 
+            <span className="highlight"> technical excellence</span> and 
+            <span className="highlight"> innovation</span>. We are committed to advancing the theory, 
+            practice, and application of computer and information processing sciences through 
+            education, knowledge sharing, and collaborative initiatives.
           </p>
         </div>
         
@@ -72,15 +65,13 @@ const VisionAndGoals = () => {
             ref={(el) => (cardsRef.current[0] = el)}
           >
             <div className="card-icon-container">
-              <FaLaptopCode className="card-icon" />
-              <div className="icon-backdrop"></div>
+              <FaServer className="card-icon" />
             </div>
-            <h3>Technical Workshops</h3>
+            <h3>Technical Development</h3>
             <p>
-              Hosting bootcamps, events, and training sessions to deepen knowledge 
-              in Computational Intelligence and bridge theory with practice.
+              Organizing hands-on workshops, hackathons, and training sessions on emerging 
+              computing technologies, software development methodologies, and system architecture.
             </p>
-            <div className="card-circuit"></div>
           </div>
           
           <div 
@@ -88,15 +79,13 @@ const VisionAndGoals = () => {
             ref={(el) => (cardsRef.current[1] = el)}
           >
             <div className="card-icon-container">
-              <FaUsers className="card-icon" />
-              <div className="icon-backdrop"></div>
+              <FaGraduationCap className="card-icon" />
             </div>
-            <h3>Team Growth & Soft Skills</h3>
+            <h3>Professional Growth</h3>
             <p>
-              Empowering our team with leadership, communication, teamwork, and 
-              problem-solving skills for both technical and personal development.
+              Creating opportunities for members to enhance both technical and soft skills 
+              through mentoring programs, specialized certifications, and industry connections.
             </p>
-            <div className="card-circuit"></div>
           </div>
           
           <div 
@@ -104,36 +93,22 @@ const VisionAndGoals = () => {
             ref={(el) => (cardsRef.current[2] = el)}
           >
             <div className="card-icon-container">
-              <FaGlobeAmericas className="card-icon" />
-              <div className="icon-backdrop"></div>
+              <FaNetworkWired className="card-icon" />
             </div>
-            <h3>Expanding Our Reach</h3>
+            <h3>Community Building</h3>
             <p>
-              Building strong connections within and beyond IEEE, increasing our 
-              chapter's visibility and influence in the field of Computational Intelligence.
+              Establishing a strong network of computing professionals, fostering collaboration 
+              across disciplines, and creating platforms for knowledge exchange and innovation.
             </p>
-            <div className="card-circuit"></div>
           </div>
         </div>
         
         <div className="vision-footer">
-          <div className="vision-dots">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="vision-dot"></div>
-            ))}
-          </div>
-          <p>Join us in shaping the future of Computational Intelligence</p>
+          <p>Join us in advancing the future of computing</p>
         </div>
       </div>
       
-      <div className="vision-background">
-        <div className="vision-grid"></div>
-        <div className="vision-particles">
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="vision-particle"></div>
-          ))}
-        </div>
-      </div>
+      <div className="vision-background"></div>
     </section>
   );
 };

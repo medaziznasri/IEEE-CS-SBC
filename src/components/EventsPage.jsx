@@ -1,11 +1,20 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 import logo1 from '../assets/images/ieee ramadhanieet.jpg';
 import '../styles/EventsPage.css';
 
 function EventsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [animatedEvents, setAnimatedEvents] = useState([]);
+  
+  // Add particles for consistent look with EventDetails
+  const [particles] = useState(Array.from({ length: 8 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    size: Math.random() * 3 + 2,
+    delay: Math.random() * 5
+  })));
   
   const events = useMemo(() => [
     {
@@ -16,6 +25,7 @@ function EventsPage() {
       image: logo1,
       description: 'A special evening where we come together to break our fast, enjoy delicious food and create unforgettable memories.'
     },   
+    // You can add more events when needed
   ], []);
 
   const categories = [
@@ -37,13 +47,32 @@ function EventsPage() {
 
   return (
     <div className="events-page-container">
-      <div className="flow-bubble"></div>
-      <div className="flow-bubble"></div>
-      <div className="flow-bubble"></div>
+      {/* Particles for consistent look with EventDetails */}
+      <div className="particles" aria-hidden="true">
+        {particles.map(particle => (
+          <div 
+            key={particle.id}
+            className="particle"
+            style={{
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              animationDelay: `${particle.delay}s`
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Decorative elements */}
+      <div className="decoration-blob blob-1"></div>
+      <div className="decoration-blob blob-2"></div>
       
       <div className="events-header">
-        <h2 className="section-title">Events</h2>
-        <div className="glowing-line"></div>
+        <h2 className="section-title">Our Events</h2>
+        <p className="events-subtitle">
+          Discover our latest activities, workshops, and community gatherings designed to enhance your skills and expand your network.
+        </p>
       </div>
 
       <div className="events-filter">
@@ -68,12 +97,23 @@ function EventsPage() {
               <div className="event-image">
                 <img src={event.image} alt={event.title} />
                 <div className="event-date">{event.date}</div>
+                <div className={`event-category ${event.category}`}>
+                  {event.category === 'upcoming' ? 'Upcoming' : 'Workshop'}
+                </div>
               </div>
               <div className="event-content">
-                <h3 className="event-title">{event.title}</h3>
+                <h3 className="event-title">
+                  <span className="title-text-override">{event.title}</span>
+                </h3>
                 <p className="event-description">{event.description}</p>
                 <div className="event-buttons">
-                  <Link to={`/events/${event.id}`} className="view-more-link">View More</Link>
+                  <Link 
+                    to={`/events/${event.id}`} 
+                    className="view-more-link"
+                  >
+                    View Details
+                    <span className="icon">→</span>
+                  </Link>
                 </div>
               </div>
             </div>
